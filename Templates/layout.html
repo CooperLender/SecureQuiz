@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css">
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+{% block content %}{% endblock %}
+<center>
+  <div class="container">
+   <div class = "item answer1 an">
+     <center>
+         <center>
+           <form action={{ url_for(nextpage) }} method="POST">
+             <button class="nes-btn is-primary"  id="full" value = "answered1"name="1"> 
+               <center>
+         
+                <h1>True</h1>
+                   
+               </center>
+             </button>
+           </form> 
+ </center>
+ </div>
+ <div class = "item answer2 an">
+   <center>
+       <center>
+         <form action={{ url_for(nextpage) }} method="POST">
+           <button class="nes-btn is-warning"  id="full" value = "answered2"name="2"> 
+             <center>
+       
+                 <h1>False</h1>
+                 
+             </center>
+           </button>
+         </form> 
+          <!-- <form action="" method="post">
+           <button name="foo" value="upvote">Upvote</button>
+       </form> -->
+           
+           
+       </center>
+  
+ </center>
+ </div>
+ <div class = "item question an nes-container is-rounded">
+   <center>
+  
+       <center>
+ 
+           <h1>{{question}}</h1>
+           
+       </center>
+ 
+ </center>
+ </div>
+  </div>
+ </center>
+<!-- <div id="footer">
+  
+ <a href="/startOver">Start over</a> -->
+
+</div>
+
+</body>
+
+</html>
