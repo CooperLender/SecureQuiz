@@ -68,7 +68,18 @@ def renderPage5():
             session["answerTo4"] = request.form["2"]
         except:
             session["answerTo4"] = request.form["1"]
-    return render_template('page5.html', nextpage = 'renderPage5')
+    o = 0
+    r = session["answerTo4"] + session["answerTo3"] 
+    if session["answerTo4"] =="answered1":
+        o+=1
+    if session["answerTo3"] =="answered1":
+        o+=1
+    if session["answerTo2"] =="answered1":
+        o+=1
+    if session["answerTo1"] =="answered1":
+        o+=1
+    m = (o/4)*100
+    return render_template('page5.html', nextpage = 'renderPage5', score = m)
 
     
 if __name__=="__main__":
