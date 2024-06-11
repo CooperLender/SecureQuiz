@@ -31,12 +31,20 @@ def startOver():
 
 @app.route('/page1')
 def renderPage1():
+    try:
+        if session["answerTo1"]:
+            return render_template('page2.html', nextpage = 'renderPage3', question = question2)
+    except:
+        print("o")
     return render_template('page1.html', nextpage = 'renderPage2', question = question1)
 
 @app.route('/page2',methods=['GET','POST'])
 def renderPage2():
-    if session["answerto1"]:
-        return render_template('page3.html', nextpage = 'renderPage4', question = question3)
+    try:
+        if session["answerTo2"]:
+            return render_template('page3.html', nextpage = 'renderPage4', question = question2)
+    except:
+        print("o")
     if request.method == 'POST':
         try:
             session["answerTo1"] = request.form["2"]
@@ -46,8 +54,11 @@ def renderPage2():
 
 @app.route('/page3',methods=['GET','POST'])
 def renderPage3():
-    if session["answerto2"]:
-        return render_template('page4.html', nextpage = 'renderPage5', question = question4)
+    try:
+        if session["answerTo3"]:
+            return render_template('page4.html', nextpage = 'renderPage5', question = question2)
+    except:
+        print("o")
     if request.method == 'POST':
         try:
             session["answerTo2"] = request.form["2"]
@@ -58,8 +69,11 @@ def renderPage3():
 
 @app.route('/page4',methods=['GET','POST'])
 def renderPage4():
-    if session["answerto3"]:
-        return render_template('page5.html', nextpage = 'renderPage6', question = question4)
+    try:
+        if session["answerTo4"]:
+            return render_template('page5.html', nextpage = 'renderPage5', question = question2)
+    except:
+        print("o")
     if request.method == 'POST':
         try:
             session["answerTo3"] = request.form["2"]
