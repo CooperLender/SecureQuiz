@@ -35,6 +35,8 @@ def renderPage1():
 
 @app.route('/page2',methods=['GET','POST'])
 def renderPage2():
+    if session["answerto1"]:
+        return render_template('page3.html', nextpage = 'renderPage4', question = question3)
     if request.method == 'POST':
         try:
             session["answerTo1"] = request.form["2"]
@@ -44,6 +46,8 @@ def renderPage2():
 
 @app.route('/page3',methods=['GET','POST'])
 def renderPage3():
+    if session["answerto2"]:
+        return render_template('page4.html', nextpage = 'renderPage5', question = question4)
     if request.method == 'POST':
         try:
             session["answerTo2"] = request.form["2"]
@@ -54,6 +58,8 @@ def renderPage3():
 
 @app.route('/page4',methods=['GET','POST'])
 def renderPage4():
+    if session["answerto3"]:
+        return render_template('page5.html', nextpage = 'renderPage6', question = question4)
     if request.method == 'POST':
         try:
             session["answerTo3"] = request.form["2"]
