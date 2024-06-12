@@ -32,6 +32,37 @@ def startOver():
 @app.route('/page1')
 def renderPage1():
     try:
+        if session["answerTo4"]:
+            o = 0
+            r = session["answerTo4"] + session["answerTo3"] 
+            if session["answerTo4"] =="answered1":
+                o+=1
+            if session["answerTo3"] =="answered1":
+                o+=1
+            if session["answerTo2"] =="answered1":
+                o+=1
+            if session["answerTo1"] =="answered1":
+                o+=1
+            
+            m = (o/4)*100
+            if o == 0:
+                m = 0
+            
+            return render_template('page5.html', nextpage = 'renderPage5', score = m)
+            
+    except:
+        print("o") 
+    try:
+        if session["answerTo3"]:
+            return render_template('page4.html', nextpage = 'renderPage5', question = question4)
+    except:
+        print("o")
+    try:
+        if session["answerTo2"]:
+            return render_template('page3.html', nextpage = 'renderPage4', question = question3)
+    except:
+        print("o")
+    try:
         if session["answerTo1"]:
             return render_template('page2.html', nextpage = 'renderPage3', question = question2)
     except:
@@ -98,7 +129,11 @@ def renderPage5():
         o+=1
     if session["answerTo1"] =="answered1":
         o+=1
+    
     m = (o/4)*100
+    if o == 0:
+        m = 0
+    
     return render_template('page5.html', nextpage = 'renderPage5', score = m)
 
     
